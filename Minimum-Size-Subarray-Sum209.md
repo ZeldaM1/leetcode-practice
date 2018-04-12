@@ -7,4 +7,13 @@ the subarray [4,3] has the minimal length under the problem constraint.
 # 分析
 # 程序实现
 ```cpp
-
+class Solution {
+public:
+    int minSubArrayLen(int s, vector<int>& nums) {
+        int sum=0;
+        for(int i=0;i<nums.size();i++)
+            sum+=nums[i];
+        if(sum<s||nums.size()==0)
+            return 0;
+    }
+};
