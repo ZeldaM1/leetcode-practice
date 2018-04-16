@@ -13,7 +13,7 @@ For example, the following two linked lists: \
 A:          a1 → a2->c1 → c2 → c3        
 B:     b1 → b2 → b3->c1 → c2 → c3
 # 分析
-
+这道题其实就是在比较两个单项链表的节点是否相同，但须注意的是，在两个链表的交集节点之前链表的长度可能不同，故不能单纯的使当前节点指针指向下一节点，而需要使得长的链表先走distance步（distance为两个链表长度差值）
 # 程序实现
 ```cpp
 /**
@@ -39,22 +39,25 @@ public:
         int distance;
         lenA=length(headA);
         lenB=length(headB);
-        distance=lenA-lenB;
-        if(distance>0){
+      distance= lenA - lenB;     
+           if(distance>0){
             for(int i=0;i<distance;i++)
             headA=headA->next;
         }
         else
+        {
             for(int i=0;i<abs(distance);i++)
                  headB=headB->next;
-        while(headA!=NULL&&headB!=NULL)
-        {
-            if(headA=headB)
-                return headA;
-            headA=headA->next;
-            headB=headB->next;
-        
         }
-        return NULL;
-    }
+        while (headB!=NULL && headA!=NULL) {  
+            if (headB == headA) {  
+                return headA;  
+            }  
+
+            headB = headB->next;  
+            headA = headA ->next;  
+        }  
+        return NULL;  
+          
+    } 
 };
