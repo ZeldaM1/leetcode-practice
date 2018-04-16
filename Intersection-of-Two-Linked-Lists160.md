@@ -15,3 +15,46 @@ B:     b1 → b2 → b3->c1 → c2 → c3
 # 分析
 
 # 程序实现
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int length(ListNode *p){
+        int len=0;
+        while(p){
+            len++;
+            p=p->next;
+        }
+        return len;
+    }
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int lenA=0,lenB=0;
+        int distance;
+        lenA=length(headA);
+        lenB=length(headB);
+        distance=lenA-lenB;
+        if(distance>0){
+            for(int i=0;i<distance;i++)
+            headA=headA->next;
+        }
+        else
+            for(int i=0;i<abs(distance);i++)
+                 headB=headB->next;
+        while(headA!=NULL&&headB!=NULL)
+        {
+            if(headA=headB)
+                return headA;
+            headA=headA->next;
+            headB=headB->next;
+        
+        }
+        return NULL;
+    }
+};
