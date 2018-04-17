@@ -8,3 +8,47 @@ Given 1->4->3->2->5->2 and x = 3,
 return 1->2->2->4->3->5.
 # 分析
 # 程序实现
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        ListNode *left_head=NULL,*left_tail=NULL;
+        ListNode *right_head=NULL,*right_tail=NULL;
+        ListNode *p=head;
+        
+        while(p){
+            if(p->val<x){
+                if(left_tail){
+                    left_tail->next=p;
+                    left_tail=left_tail->next;
+                }
+                else
+                    left_head=left_tail=p;
+            }
+            else{
+                if(right_tail){
+                    right_tail->next=p;
+                    right_tail=right_tail->next;
+                }
+                else
+                    right_head=right_tail=p;
+            }
+            p=p->next;
+        }
+        
+        if(right_tail)
+            right_tail->next=NULL;
+        if(left_tail)
+            left_tail->next=right_head;
+            
+        return left_head?left_head:right_head;
+    }
+};
