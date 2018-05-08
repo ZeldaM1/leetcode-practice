@@ -23,7 +23,7 @@ Output: 4\
 Explanation: Status can be: [off, on, off], [on, off, on], [off, off, off], [off, on, on].
 # 分析
  * 最简单的就是列出每次的情况然后对每次情况进行随机选择然后统计不同情况出现的次数，但是随机组合是不满足程序运行顺序的，此种作废。。
- * 然后就是找规律：\
+ * 然后就是找规律：
     * n=1              2
     * m=0              1
     * n==2 and m==1    3
