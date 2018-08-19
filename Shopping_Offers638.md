@@ -40,7 +40,6 @@ Note:
 递归做法但是答案就是不对.....
 * solution2:
 和solution1差不多但是不是通过判断j的位置来判断的needs是否大于special,而是设定了一个bool对象来确定,然后再讨论bool对象的情况,进而确定下一步方法.
-* solution1:
 # 程序实现
 * solution1:
 ```cpp
