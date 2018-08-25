@@ -26,7 +26,7 @@ Explanation: Player 1 first chooses 1. Then player 2 have to choose between 5 an
 Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win.
 # 分析
 动态规划，设定一个大小为[nums.size(),nums.size()]的数组，其对角线元素为给定数组元素，然后从右下方开始向上遍历数组，状态转移方程：a[i][j]=max(nums[i]-a[i+1][j],nums[j]-a[i][j-1])
-#　程序实现
+# 程序实现
 ```cpp
 class Solution {
 public:
